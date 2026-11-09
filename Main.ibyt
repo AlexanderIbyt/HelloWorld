@@ -1,8 +1,7 @@
-ibyt_asm_only
 
 import <Basic.ibyt>
 
 Start{
-	prepare "Hello World\n", 13 
-	call Basic.Put()
+	prepare "Hello World\n"
+	call Basic.Out(_)
 }
