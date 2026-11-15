@@ -5,7 +5,7 @@ ibyt is a systems language between assembler and C. The compiler turns a `Main.i
 ## What you need
 
 - A 64-bit Linux (x86-64)
-- The ibyt compiler (`ibytc`) and the `library` folder, from the download below
+- The ibyt compiler (`ibytCompiler`) and the `library` folder, from the download below
 - Nothing else for normal programs: the compiler writes the executable itself. For some programs it falls back to `nasm` and `ld`; if it asks for them:
 
 | Distribution | Command |
@@ -23,16 +23,16 @@ Download the latest release from the **Releases** page of this repository (`ibyt
 
     unzip ibyt-<version>.zip
 
-You get two things: the compiler `ibytc` and the folder `library`.
+You get two things: the compiler `ibytCompiler` and the folder `library`.
 
-    chmod +x ibytc        # only if the file is not executable yet
+    chmod +x ibytCompiler        # only if the file is not executable yet
 
 ## 2. Your first program
 
 Make a project folder and copy the compiler and the library into it:
 
     mkdir HelloWorld && cd HelloWorld
-    cp ../ibyt-<version>/ibytc .
+    cp ../ibyt-<version>/ibytCompiler .
     cp -r ../ibyt-<version>/library .
 
 Create a file named `Main.ibyt` (the name is required):
@@ -45,7 +45,7 @@ Create a file named `Main.ibyt` (the name is required):
 
 Run the compiler in this folder:
 
-    ./ibytc
+    ./ibytCompiler
 
 It prints `Success! ... 'MyProgram'`. Start your program:
 
@@ -65,7 +65,7 @@ Start the file with `ibyt_bare` and import `BasicBare` instead of `Basic`:
         exit
     }
 
-`./ibytc` writes `MyProgram.img`. Run it in QEMU:
+`./ibytCompiler` writes `MyProgram.img`. Run it in QEMU:
 
     qemu-system-x86_64 -drive format=raw,file=MyProgram.img -serial stdio
 
